@@ -1,16 +1,15 @@
-
 import requests
 import os
 
 # Set environment variables
-os.environ['LAT']
-os.environ['LONG']
-os.environ['API_KEY'] = "14c52ccb6470e53bd70d27f06e1b5841"
+latitude=os.environ['LAT']
+longitude=os.environ['LONG']
+YOUR_API_KEY=os.environ['API_KEY']
 
-def get_weather(LAT,LONG,API_KEY):
-    url = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LONG}&appid={API_KEY}&units=metric"
+def get_weather(latitude,longitude,YOU_API_KEY):
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={YOUR_API_KEY}&units=metric"
     response = requests.get(url)
     print(response.json())
 
 
-get_weather(LAT,LONG,API_KEY)
+get_weather(latitude,longitude,YOUR_API_KEY)
