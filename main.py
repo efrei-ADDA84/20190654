@@ -10,7 +10,7 @@ app = FastAPI()
 YOUR_API_KEY=os.environ['API_KEY']
 
 @app.get("/")
-async def get_weather():
+async def get_weather(lat,lon):
 
     url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={YOUR_API_KEY}&units=metric"
     response = requests.get(url)
