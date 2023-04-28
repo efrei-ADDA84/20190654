@@ -1,15 +1,22 @@
 import requests
 import os
+from fastapi import FastAPI
+
+app = FastAPI()
 
 # Set environment variables
-latitude=os.environ['LAT']
-longitude=os.environ['LONG']
+
+
 YOUR_API_KEY=os.environ['API_KEY']
 
-def get_weather(latitude,longitude,YOUR_API_KEY):
-    url = f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={YOUR_API_KEY}&units=metric"
+@app.post("/")
+async def get_weather(lat,lon):
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={YOUR_API_KEY}&units=metric"
     response = requests.get(url)
-    print(response.json())
+    if response.status_code != 200:
+        return {"error": "Cannot find the location."}
+    return response.json()
 
 
-get_weather(latitude,longitude,YOUR_API_KEY)
+
+
