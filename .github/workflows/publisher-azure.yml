@@ -36,4 +36,4 @@ jobs:
             name: '20190654'
             location: 'germany north'
             secure-environment-variables : API_KEY=${{secrets.API_KEY}}
-            ports: 8081
+            ports: 8081 
