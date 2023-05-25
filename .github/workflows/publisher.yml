@@ -1,5 +1,5 @@
 on: [push]
-name: Build and deploy image
+name: Build and deploy image on Azure
 
 jobs:
     build-and-deploy:
